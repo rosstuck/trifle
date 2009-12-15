@@ -36,7 +36,7 @@ Delegates look like controllers:
         }
     }
 
-__call() and __get() proxy to the controller, so you can naturally pull resources from it (but not __set()!). You can also call $this->getController() to reduce magic overhead.
+\_\_call() and \_\_get() proxy to the controller, so you can naturally pull resources from it (but not \_\_set()!). You can also call $this->getController() to reduce magic overhead.
 
 ## View scripts
 Delegates can ship with default view scripts.

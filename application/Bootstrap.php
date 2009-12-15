@@ -8,8 +8,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
     protected function _initDelegatePaths() {
         Trifle_Manager::setDefaultPaths(array(
-            'Proj_Delegate'     => 'Proj/Delegate/',
-            'Trifle_Delegate'   => 'Trifle/Delegate/'
+            'Proj_Delegate'    => 'Proj/Delegate/',
+            'Company_Delegate' => 'Company/Delegate/'
         ));
     }
 }

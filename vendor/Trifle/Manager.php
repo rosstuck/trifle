@@ -115,7 +115,7 @@ class Trifle_Manager {
         
         return $this;        
     }
-    
+
     /**
      * Find the actions usable from this delegate, base on it's spec
      *
@@ -137,7 +137,7 @@ class Trifle_Manager {
         if(!empty($spec['except'])) {
             $actions = array_diff($actions, (array)$spec['except']);
         }
-        
+
         return $actions;
     }
 

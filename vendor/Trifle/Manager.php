@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Controls the mapping and execution of multiple delegates for one controller
  * @package Trifle

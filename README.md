@@ -1,13 +1,11 @@
 # What is it?
-Trifle...
-- ...is a set of classes for making reusable actions in Zend Framework.
-- ...tries to let you compose boilerplate code in more flexible ways.
-- ...shamelessly reuses ideas from other projects like Action Delegates and InheritedResource.
+Trifle is a set of classes for making reusable actions in Zend Framework. It tries to let you compose boilerplate code in more flexible ways. This partly involves shamelessly reuses ideas from other projects like [Action Delegates](http://iam.mrburly.com/content/display/show/slug/action-delegates) and [Inherited_Resources](http://github.com/josevalim/inherited_resources).
 
 ## How do I use it?
 Copy the contents of vendor/Trifle to your own vendor directory.
 
-In your bootstrap, add this:
+In your bootstrap, setup the plugin loader:
+
     protected function _initDelegatePaths() {
         Trifle_Manager::setDefaultPaths(array(
             'Project_Delegate'     => 'Project/Delegate/',
@@ -16,15 +14,18 @@ In your bootstrap, add this:
     }
 
 In your controllers, add your delegates:
+
     class IndexController extends Trifle_ControllerAbstract {
         protected $_delegates = array('Crud', 'GoogleMaps'); 
     }
     
 Or if it's just one:
+
     protected $_delegates = 'Crud'; 
 
 ## Writing a delegate
 Delegates look like controllers:
+
     class Project_Delegate_Crud extends Trifle_DelegateAbstract {
         public function indexAction() {
             $this->view->list = 'Collection goes here...';
@@ -39,6 +40,7 @@ __call() and __get() proxy to the controller, so you can naturally pull resource
 
 ## View scripts
 Delegates can ship with default view scripts.
+
     class Project_Delegate_Geolocation extends Trifle_DelegateAbstract {
         public function init() {
             $this->addDefaultScriptPath('absolute path to scripts folder');
@@ -54,6 +56,7 @@ See the sample project included for more examples.
 
 ## Handling multiple delegates
 If you're mixing in two delegates that both respond to the same action, Trifle will throw an exception. However, you can work around this:
+
     class IndexController extends Trifle_ControllerAbstract {
         protected $_delegates = array(
             'GoogleMaps' => array(
@@ -65,7 +68,7 @@ If you're mixing in two delegates that both respond to the same action, Trifle w
         ); 
     }
 
-So far, trifle only accepts the "only" and "except" parameters. 
+So far, trifle accepts the "only" and "except" parameters. 
 
 ## Disclaimer
 This version is still rough and misses some features (and points). It's probably okay but I can't promise anything.
